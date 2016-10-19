@@ -1,0 +1,70 @@
+<html  data-ng-app="index">
+<head>
+<title>Microservices</title>
+<link href="//fonts.googleapis.com/css?family=Varela+Round|Montserrat:400,700" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="/css/external/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/external/bootstrap-theme.min.css"/>
+<link rel="stylesheet" href="/css/external/spring.css"/>
+<link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+<script>
+var app = angular.module('index', []);
+
+
+app.controller('indexController',[ '$scope', '$http', '$window', function($scope, $http, $window) {
+	
+		$scope.loadProject = function() {
+			console.log("inside"+$scope.loadproject);
+			if($scope.loadproject == "NEW"){
+			$window.location.href = '/stubs.html';
+			}else if($scope.loadproject == "EXISTS"){
+				$window.location.href = '/restapi.html';
+			}
+				
+		};
+	}]);
+
+</script>
+
+</head>
+<body>
+<!-- <form data-ng-submit="submit()" enctype="multipart/form-data"
+ data-ng-controller="StubsSubmitController"> -->
+<div class="container-fluid" data-ng-controller="indexController">
+<div class="row start-header">
+<div class="container">
+<h1>Cognizant Spring Boot Initializr <small>bootstrap your application now</small></h1>
+</div>
+</div>
+<div class="container start-main">
+<div class="row form-inline text-center">
+<div class="form-group project-choice">
+</div>
+</div>
+<input id="baseDir" name="baseDir" type="hidden" value="demo">
+<div class="row">
+<div class="col-sm-12 col-md-6">
+<h2>Choose desired option mentioned below</h2>
+<!-- <p>Add SOAP dependencies to your application</p> -->
+<div class="form-group groupid-form-group">
+<label for="soapradio" class="control-label">Do you want to create new project?</label>
+<input type="radio" data-ng-value="'NEW'" data-ng-click="loadProject()" data-ng-model="loadproject" name="loadproject" style="height:35px; width:35px; vertical-align: middle;">
+</div>
+<div class="form-group groupid-form-group"><label for="wsdlurlID" class="control-label">OR</label></div>
+<div class="form-group groupid-form-group">
+<label for="dbradio" class="control-label">Do you want to continue with old project?</label>
+<input type="radio" data-ng-value="'EXISTS'"  data-ng-click="loadProject()" data-ng-model="loadproject" name="loadproject" style="height:35px; width:35px; vertical-align: middle;">
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- </form> -->
+<footer>
+<div class="start-header">
+<p> powered by cognizant</p>
+</div>
+</footer>
+</body>
+</html>
